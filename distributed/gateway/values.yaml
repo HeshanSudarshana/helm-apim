@@ -11,7 +11,7 @@
 
 aws:
   # -- If AWS is used as the cloud provider
-  enabled: true
+  enabled: false
   # -- AWS region
   region: ""
   secretsManager:
@@ -129,7 +129,7 @@ wso2:
 
   apim:
     # -- APIM version
-    version: "4.2.0"
+    version: "4.3.0"
     # -- Secure vauld enabled
     secureVaultEnabled: false
     # Logging related configurations
@@ -151,25 +151,24 @@ wso2:
         type: "database_unique_id"
         # -- User store properties
         properties:
-          key: value
       # -- Super admin username
-      adminUsername: ""
+      adminUsername: "admin"
       # -- Super admin password
-      adminPassword: ""
+      adminPassword: "admin"
       databases:
         # -- Database type. eg: mysql, oracle, mssql, postgres
-        type: ""
+        type: "mssql"
         jdbc:
           # -- JDBC driver class name
-          driver: ""
+          driver: "com.microsoft.sqlserver.jdbc.SQLServerDriver"
         # -- APIM SharedDB configurations. This is required for gateway only in a multi-tenancy scenario
         shared_db:
           # -- APIM SharedDB URL
-          url: ""
+          url: "jdbc:sqlserver://;serverName=10.10.0.12;database=shared_db;integratedSecurity=false;encrypt=false"
           # -- APIM SharedDB username
-          username: ""
+          username: "heshans"
           # -- APIM SharedDB password
-          password: ""
+          password: "Apim@1234567"
           # -- APIM database JDBC pool parameters
           poolParameters:
             defaultAutoCommit: false
@@ -182,7 +181,7 @@ wso2:
 
       security:
         # -- Kubernetes secret containing the keystores and truststore
-        jksSecretName: "apim-keystore-secret"
+        jksSecretName: "jks-secret"
         keystores:
           primary:
             # -- Primary keystore enabled
@@ -203,9 +202,9 @@ wso2:
             # -- TLS keystore alias
             alias: "wso2carbon"
             # -- TLS keystore password
-            password: ""
+            password: "wso2carbon"
             # -- TLS keystore key password
-            keyPassword: ""
+            keyPassword: "wso2carbon"
           internal:
             # -- Internal keystore enabled
             enabled: false
@@ -221,11 +220,11 @@ wso2:
           # -- Truststore name
           name: "client-truststore.jks"
           # -- Truststore password
-          password: ""
+          password: "wso2carbon"
 
       km:
         # -- Key manager service name if default Resident KM is used
-        serviceUrl: "wso2am-cp-service"
+        serviceUrl: "pattern2-cp-wso2am-cp-service"
 
       iskm:
         # If Identity Server is used as the Resident KM
@@ -240,7 +239,7 @@ wso2:
       
       jwt:
         # Enable backend JWT generation in gateway
-        enabled: false
+        enabled: true
         # JWT encoding algorithm. Can be either base64 or base64url
         encoding: "base64"
         # JWT header name.
@@ -259,14 +258,14 @@ wso2:
       throttling:
         # -- Traffic manager loadbalancer service url for throttling.
         # If the traffic manager is separated from control-plane, all urls should be pointed to traffic-manager ones.
-        serviceUrl: "wso2am-cp-service"
+        serviceUrl: "pattern2-tm-wso2am-tm-service"
         portOffset: 0
         # -- Port of the service URL
         servicePort: 9443
         # -- Traffic manager service urls. You only need to define one if the TM is not in HA.
         urls:
-          - "wso2am-cp-1-service"
-          - "wso2am-cp-2-service"
+          - "pattern2-tm-wso2am-tm-1-service"
+          - "pattern2-tm-wso2am-tm-2-service"
         # -- Enable unlimited throttling tier
         unlimitedTier: true
         # -- Enable header based throttling
@@ -279,15 +278,15 @@ wso2:
       eventhub:
         # -- Event hub (control plane) enabled.
         # This should be enabled if the traffic manager is separated from the control-plane.
-        enabled: false
+        enabled: true
         # -- Event hub (control plane) loadbalancer service url
-        serviceUrl: "wso2am-cp-service"
+        serviceUrl: "pattern2-cp-wso2am-cp-service"
         # -- Event hub (control plane) service port
         servicePort: 9443
         # -- Event hub service urls
         urls:
-          - "wso2am-cp-1-service"
-          - "wso2am-cp-2-service"
+          - "pattern2-cp-wso2am-cp-1-service"
+          - "pattern2-cp-wso2am-cp-2-service"
         
       # APIM cache related configurations
       cache:
@@ -368,11 +367,11 @@ wso2:
     # Container image configurations
     image:
       # -- Container registry hostname
-      registry: ""
+      registry: "apim430.azurecr.io"
       # -- Azure ACR repository name consisting the image
-      repository: ""
+      repository: "wso2am"
       # -- Docker image digest
-      digest: ""
+      digest: "sha256:f635ecac990a5449853c4d7cebb1e74587c3ff1646545ccf74f262c3f06ac47f"
       # -- Refer to the Kubernetes documentation on updating images (https://kubernetes.io/docs/concepts/containers/images/#updating-images)
       imagePullPolicy: Always
 
@@ -435,9 +434,9 @@ wso2:
     # -- Maximum replicas for HPA
     maxReplicas: 3
     # -- Target CPU utilization percentage for HPA
-    cpuUtilizationPercentage: 75
+    cpuUtilizationPercentage: 80
     # -- Target memory utilization percentage for HPA
-    memoryUtilizationPercentage: 75
+    memoryUtilizationPercentage: 80
     # -- Minimum available pod counts for PDB
     minAvailable: "50%"
 
