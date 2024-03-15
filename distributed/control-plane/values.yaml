@@ -11,7 +11,7 @@
 
 aws:
   # -- If AWS is used as the cloud provider
-  enabled: true
+  enabled: false
   efs:
     # -- EFS capacity
     capacity: ""
@@ -174,7 +174,7 @@ kubernetes:
 wso2:  
   apim:
     # -- APIM version
-    version: "4.2.0"
+    version: "4.3.0"
     # -- Secure vauld enabled
     secureVaultEnabled: false
     # Logging related configurations
@@ -195,25 +195,24 @@ wso2:
         type: "database_unique_id"
         # -- User store properties
         properties:
-          key: value
       # -- Super admin username
-      adminUsername: ""
+      adminUsername: "admin"
       # -- Super admin password
-      adminPassword: ""
+      adminPassword: "admin"
       databases:
         # -- Database type. eg: mysql, oracle, mssql, postgres
-        type: ""
+        type: "mysql"
         jdbc:
           # -- JDBC driver class name
-          driver: ""
+          driver: "com.mysql.cj.jdbc.Driver"
         # -- APIM AM_DB configurations.
         apim_db:
           # -- APIM AM_DB URL
-          url: ""
+          url: "jdbc:mysql://multi-dc-pattern-2-mysql.mysql.database.azure.com:3306/apim_db?useSSL=false"
           # -- APIM AM_DB username
-          username: ""
+          username: "heshans"
           # -- APIM AM_DB password
-          password: ""
+          password: "Apim@123"
           # -- APIM database JDBC pool parameters
           poolParameters:
             defaultAutoCommit: false
@@ -226,11 +225,11 @@ wso2:
         # -- APIM SharedDB configurations.
         shared_db:
           # -- APIM SharedDB URL
-          url: ""
+          url: "jdbc:mysql://multi-dc-pattern-2-mysql.mysql.database.azure.com:3306/shared_db?useSSL=false"
           # -- APIM SharedDB username
-          username: ""
+          username: "heshans"
           # -- APIM SharedDB password
-          password: ""
+          password: "Apim@123"
           # -- APIM shared database JDBC pool parameters
           poolParameters:
             defaultAutoCommit: false
@@ -243,7 +242,7 @@ wso2:
 
       security:
         # -- Kubernetes secret containing the keystores and truststore
-        jksSecretName: "apim-keystore-secret"
+        jksSecretName: "jks-secret"
         keystores:
           primary:
             # -- Primary keystore enabled
@@ -264,9 +263,9 @@ wso2:
             # -- TLS keystore alias
             alias: "wso2carbon"
             # -- TLS keystore password
-            password: ""
+            password: "wso2carbon"
             # -- TLS keystore key password
-            keyPassword: ""
+            keyPassword: "wso2carbon"
           internal:
             # -- Internal keystore enabled
             enabled: false
@@ -282,7 +281,7 @@ wso2:
           # -- Truststore name
           name: "client-truststore.jks"
           # -- Truststore password
-          password: ""
+          password: "wso2carbon"
       
       gateway:
         # -- APIM Gateway environments
@@ -293,7 +292,7 @@ wso2:
           displayInApiConsole: true
           description: "This is a hybrid gateway that handles both production and sandbox token traffic."
           showAsTokenEndpointUrl: true
-          serviceName: "wso2am-gateway-service"
+          serviceName: "pattern2-gw-wso2am-gateway-service"
           servicePort: 9443
           wsHostname: "websocket.wso2.com"
           httpHostname: "gw.wso2.com"
@@ -363,11 +362,11 @@ wso2:
     # Container image configurations
     image:
       # -- Container registry hostname
-      registry: ""
+      registry: "apim430.azurecr.io"
       # -- Azure ACR repository name consisting the image
-      repository: ""
+      repository: "wso2am"
       # -- Docker image digest
-      digest: ""
+      digest: "sha256:a7a1b951289eef91d554663512bbbdb971f2462b1074fdf4ef7dd398f2cd0b4d"
       # -- Refer to the Kubernetes documentation on updating images (https://kubernetes.io/docs/concepts/containers/images/#updating-images)
       imagePullPolicy: Always
 
