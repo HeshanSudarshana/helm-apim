@@ -50,6 +50,12 @@ driver = "{{ .Values.wso2.apim.configurations.databases.jdbc.driver }}"
 {{ $key }} = "{{ $value }}"
 {{- end }}
 
+[database.mb.store_db]
+url = "jdbc:h2:./repository/database/WSO2MB_DB;DB_CLOSE_ON_EXIT=FALSE;IFEXISTS=TRUE;DB_CLOSE_DELAY=-1"
+driver = "org.h2.Driver"
+username = "wso2carbon"
+password = "wso2carbon"
+
 {{- if .Values.wso2.apim.configurations.security.keystores.primary.enabled }}
 [keystore.primary]
 type = "JKS"
