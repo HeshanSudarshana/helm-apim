@@ -122,7 +122,7 @@ wso2:
         # -- APIM AM_DB configurations.
         apim_db:
           # -- APIM AM_DB URL
-          url: "jdbc:sqlserver://;serverName=10.10.0.12;database=apim_db;integratedSecurity=false;encrypt=false"
+          url: "jdbc:sqlserver://;serverName=10.20.0.12;database=apim_db;integratedSecurity=false;encrypt=false"
           # -- APIM AM_DB username
           username: "heshans"
           # -- APIM AM_DB password
@@ -139,7 +139,7 @@ wso2:
         # -- APIM SharedDB configurations.
         shared_db:
           # -- APIM SharedDB URL
-          url: "jdbc:sqlserver://;serverName=10.10.0.12;database=shared_db;integratedSecurity=false;encrypt=false"
+          url: "jdbc:sqlserver://;serverName=10.20.0.12;database=shared_db;integratedSecurity=false;encrypt=false"
           # -- APIM SharedDB username
           username: "heshans"
           # -- APIM SharedDB password
