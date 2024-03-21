@@ -445,3 +445,50 @@ wso2:
           carbonDatabase: 50M
           # -- For persisting the indexed solr data
           solrIndexedData: 50M
+
+  multidc:
+    asyncWebhookDataPublisher:
+      - name: async-webhook-region-cp-1
+        propertiesFile: "repository/conf/jndi-region-cp-1.properties"
+
+      - name: async-webhook-region-cp-2
+        propertiesFile: "repository/conf/jndi-region-cp-2.properties"
+
+    keymgtDataPublisher:
+      - name: keymgt-event-region-cp-1
+        propertiesFile: "repository/conf/jndi-region-cp-1.properties"
+
+      - name: keymgt-event-region-cp-2
+        propertiesFile: "repository/conf/jndi-region-cp-2.properties"
+
+    notificationDataPublisher:
+      - name: notification-region-cp-1
+        propertiesFile: "repository/conf/jndi-region-cp-1.properties"
+
+      - name: notification-region-cp-2
+        propertiesFile: "repository/conf/jndi-region-cp-2.properties"
+
+    blockingDataPublisher:
+      - name: blocking-region-cp-1
+        propertiesFile: "repository/conf/jndi-region-cp-1.properties"
+
+      - name: blocking-region-cp-2
+        propertiesFile: "repository/conf/jndi-region-cp-2.properties"
+
+    tokenRevocationDataPublisher:
+      - name: token-revocation-region-cp-1
+        propertiesFile: "repository/conf/jndi-region-cp-1.properties"
+
+      - name: token-revocation-region-cp-2
+        propertiesFile: "repository/conf/jndi-region-cp-2.properties"
+
+    customJndiProperties:
+      - name: jndi-region-cp-1
+        properties:
+          host: "pattern1-region-cp-1-service"
+          port: "5672"
+
+      - name: jndi-region-cp-2
+        properties:
+          host: "pattern1-region-cp-2-service"
+          port: "5672"
