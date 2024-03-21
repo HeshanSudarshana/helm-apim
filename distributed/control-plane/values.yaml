@@ -478,10 +478,10 @@ wso2:
     customJndiProperties:
       - name: jndi-region-cp-1
         properties:
-          host: "pattern1-region-cp-1-service"
+          host: "52.230.50.58"
           port: "5672"
 
       - name: jndi-region-cp-2
         properties:
-          host: "pattern1-region-cp-2-service"
+          host: "52.230.50.76"
           port: "5672"
