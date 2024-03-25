@@ -187,7 +187,7 @@ spec:
           defaultMode: 0407
       - name: wso2am-traffic-manager-entrypoint
         configMap:
-          name: {{ template "apim-helm-tm.fullname" . }}-conf-entrypoint
+          name: {{ template "apim-helm-tm.fullname" . }}-conf-entrypoint2
           defaultMode: 0407
       - name: wso2am-traffic-manager-log4j2
         configMap:

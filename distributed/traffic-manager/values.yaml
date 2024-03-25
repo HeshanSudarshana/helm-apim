@@ -293,7 +293,7 @@ wso2:
       # -- How often (in seconds) to perform the probe
       periodSeconds: 10
       # -- Minimum consecutive successes for the probe to be considered successful after having failed
-      failureThreshold: 3
+      failureThreshold: 10
     # Indicates whether the container is ready to service requests
     readinessProbe:
       # -- Number of seconds after the container has started before readiness probes are initiated
@@ -301,7 +301,7 @@ wso2:
       # -- How often (in seconds) to perform the probe
       periodSeconds: 10
       # -- Minimum consecutive successes for the probe to be considered successful after having failed
-      failureThreshold: 3
+      failureThreshold: 10
     
     lifecycle:
       preStopHook:
