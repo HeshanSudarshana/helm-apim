@@ -122,7 +122,7 @@ wso2:
         # -- APIM AM_DB configurations.
         apim_db:
           # -- APIM AM_DB URL
-          url: "jdbc:oracle:thin:@10.10.0.4:1521/FREEPDB1"
+          url: "jdbc:oracle:thin:@10.10.0.4:1521/ORCLPDB1"
           # -- APIM AM_DB username
           username: "AMDB"
           # -- APIM AM_DB password
@@ -139,7 +139,7 @@ wso2:
         # -- APIM SharedDB configurations.
         shared_db:
           # -- APIM SharedDB URL
-          url: "jdbc:oracle:thin:@10.10.0.4:1521/FREEPDB1"
+          url: "jdbc:oracle:thin:@10.10.0.4:1521/ORCLPDB1"
           # -- APIM SharedDB username
           username: "SHAREDDB"
           # -- APIM SharedDB password
