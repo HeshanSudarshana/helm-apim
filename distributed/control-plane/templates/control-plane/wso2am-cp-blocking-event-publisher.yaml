@@ -15,6 +15,6 @@ metadata:
   name: {{ template "apim-helm-cp.fullname" . }}-conf-blocking-event-publisher
   namespace: {{ .Release.Namespace }}
 data:
-  {{- range .Values.wso2.multidc.blockingDataPublisher }}
+  {{- range .Values.wso2.multidc.notificationDataPublisher }}
   {{ .name }}.xml: {{ tpl ($.Files.Get "confs/eventpublishers/blockingEventJMSPublisher.xml") (dict "propertiesFile" .propertiesFile "name" .name "Template" $.Template) | quote }}
   {{- end }}
