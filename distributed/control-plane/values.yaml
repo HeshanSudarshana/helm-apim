@@ -366,7 +366,7 @@ wso2:
       # -- Azure ACR repository name consisting the image
       repository: "wso2am"
       # -- Docker image digest
-      digest: "sha256:ad2e464eb6b159edbdaae0d2b28bca317ced858be8086f50bdea28195b859e36"
+      digest: "sha256:f42f30b26e4e654788023e997f9a276b9bacc198e3767af2ffa5ab3b90365acf"
       # -- Refer to the Kubernetes documentation on updating images (https://kubernetes.io/docs/concepts/containers/images/#updating-images)
       imagePullPolicy: Always
 
