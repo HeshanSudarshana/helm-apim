@@ -468,13 +468,6 @@ wso2:
       - name: notification-region-cp-2
         propertiesFile: "repository/conf/jndi-region-cp-2.properties"
 
-    blockingDataPublisher:
-      - name: blocking-region-cp-1
-        propertiesFile: "repository/conf/jndi-region-cp-1.properties"
-
-      - name: blocking-region-cp-2
-        propertiesFile: "repository/conf/jndi-region-cp-2.properties"
-
     tokenRevocationDataPublisher:
       - name: token-revocation-region-cp-1
         propertiesFile: "repository/conf/jndi-region-cp-1.properties"

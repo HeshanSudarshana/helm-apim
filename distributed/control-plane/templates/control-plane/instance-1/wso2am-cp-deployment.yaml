@@ -36,7 +36,6 @@ spec:
         checksum.am.cp.eventpublishers.keymgt: {{ include (print $.Template.BasePath "/control-plane/wso2am-cp-keymgt-event-publisher.yaml") . | sha256sum }}
         checksum.am.cp.eventpublishers.notification: {{ include (print $.Template.BasePath "/control-plane/wso2am-cp-notification-event-publisher.yaml") . | sha256sum }}
         checksum.am.cp.eventpublishers.token.revocation: {{ include (print $.Template.BasePath "/control-plane/wso2am-cp-token-revocation-event-publisher.yaml") . | sha256sum }}
-        checksum.am.cp.eventpublishers.blocking: {{ include (print $.Template.BasePath "/control-plane/wso2am-cp-blocking-event-publisher.yaml") . | sha256sum }}
       labels:
         deployment: {{ template "apim-helm-cp.fullname" . }}
         node: {{ template "apim-helm-cp.fullname" . }}-1
@@ -167,11 +166,6 @@ spec:
           mountPath: /home/wso2carbon/wso2-config-volume/repository/deployment/server/eventpublishers/{{ .name }}.xml
           subPath: {{ .name }}.xml
         {{- end }}
-        {{- range .Values.wso2.multidc.blockingDataPublisher }}
-        - name: wso2-control-plane-eventpublishers-blocking
-          mountPath: /home/wso2carbon/wso2-config-volume/repository/deployment/server/eventpublishers/{{ .name }}.xml
-          subPath: {{ .name }}.xml
-        {{- end }}
         {{- range .Values.wso2.multidc.tokenRevocationDataPublisher }}
         - name: wso2-control-plane-eventpublishers-token-revocation
           mountPath: /home/wso2carbon/wso2-config-volume/repository/deployment/server/eventpublishers/{{ .name }}.xml
@@ -246,10 +240,6 @@ spec:
       - name: wso2-control-plane-eventpublishers-notification
         configMap:
           name: {{ template "apim-helm-cp.fullname" . }}-conf-notification-event-publisher
-          defaultMode: 0407
-      - name: wso2-control-plane-eventpublishers-blocking
-        configMap:
-          name: {{ template "apim-helm-cp.fullname" . }}-conf-blocking-event-publisher
           defaultMode: 0407
       - name: wso2-control-plane-eventpublishers-token-revocation
         configMap:
