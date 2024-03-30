@@ -115,18 +115,18 @@ wso2:
       adminPassword: "admin"
       databases:
         # -- Database type. eg: mysql, oracle, mssql, postgres
-        type: "mssql"
+        type: "oracle"
         jdbc:
           # -- JDBC driver class name
-          driver: "com.microsoft.sqlserver.jdbc.SQLServerDriver"
+          driver: "oracle.jdbc.driver.OracleDriver"
         # -- APIM AM_DB configurations.
         apim_db:
           # -- APIM AM_DB URL
-          url: "jdbc:sqlserver://;serverName=10.10.0.12;database=apim_db;integratedSecurity=false;encrypt=false"
+          url: "jdbc:oracle:thin:@10.10.0.4:1521/FREEPDB1"
           # -- APIM AM_DB username
-          username: "heshans"
+          username: "AMDB"
           # -- APIM AM_DB password
-          password: "Apim@1234567"
+          password: "password"
           # -- APIM database JDBC pool parameters
           poolParameters:
             defaultAutoCommit: false
@@ -139,11 +139,11 @@ wso2:
         # -- APIM SharedDB configurations.
         shared_db:
           # -- APIM SharedDB URL
-          url: "jdbc:sqlserver://;serverName=10.10.0.12;database=shared_db;integratedSecurity=false;encrypt=false"
+          url: "jdbc:oracle:thin:@10.10.0.4:1521/FREEPDB1"
           # -- APIM SharedDB username
-          username: "heshans"
+          username: "SHAREDDB"
           # -- APIM SharedDB password
-          password: "Apim@1234567"
+          password: "password"
           # -- APIM shared database JDBC pool parameters
           poolParameters:
             defaultAutoCommit: false
