@@ -164,7 +164,7 @@ wso2:
         # -- APIM SharedDB configurations. This is required for gateway only in a multi-tenancy scenario
         shared_db:
           # -- APIM SharedDB URL
-          url: "jdbc:oracle:thin:@10.20.0.15:1521/ORCLPDB1"
+          url: "jdbc:oracle:thin:@10.20.0.15:1521/FREEPDB1"
           # -- APIM SharedDB username
           username: "SHAREDDB"
           # -- APIM SharedDB password
